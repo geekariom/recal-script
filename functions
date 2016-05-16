@@ -30,3 +30,13 @@ ask_reboot() {
         shutdown -r now
     fi
 }
+
+# Vérifier la connexion
+check_online() {
+    wget -q --tries=10 --timeout=20 --spider http://www.recalbox.com/
+    if [[ $? -eq 0 ]]; then
+        echo 1
+    else
+        echo 0
+    fi
+}
