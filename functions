@@ -1,0 +1,32 @@
+#!/bin/bash
+#
+# Les fonctions globales
+#
+
+# Remonter la partition /boot en écriture
+mount_boot() {
+    rw=$(touch /boot/rw && { rm /boot/rw; echo "1"; } || echo "0")
+    if [ $rw -eq 0 ]; then
+        echo " => Partition /boot en lecture seul => montage en écriture"
+        mount -o remount,rw /boot
+        
+    else
+        echo " => Partition /boot en lecture/écriture"
+    fi
+}
+
+# Remonter la partition /boot en lecture seul
+umount_boot() {
+    echo " => Remontage de la partition /boot en lecture seul"
+    mount -o remount,ro /boot
+}
+
+# Demander un reboot
+ask_reboot() {
+    echo " => Un redémarrage est nécessaire pour prendre en compte les modifications"
+    read -p "Voulez-vous redémarrer maintenant ? (o/n)" ask
+    if [ $ask = 'o' ]; then
+        echo " => Redémarrage en cours..."
+        shutdown -r now
+    fi
+}

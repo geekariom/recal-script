@@ -14,11 +14,9 @@ enabled=$(cat /boot/config.txt | grep "max_usb_current=1" | wc -l)
 echo "### Augmenter la tension des ports USB ###"
 
 if [ $enabled = "1" ]; then
-    echo " => La tension est déjà augmenté ! Faut-il la réduire ? (o/n)"
-    read ask
+    read -p " => La tension est déjà augmenté ! Faut-il la réduire ? (o/n)" ask
 else
-    echo " => Confirmation de l'augmentation de la tension ? (o/n)"
-    read ask
+    read -p " => Confirmation de l'augmentation de la tension ? (o/n)" ask
 fi
 
 if [ $ask = "o" ]; then
