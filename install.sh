@@ -8,7 +8,7 @@ tmpfile="~/script.zip"
 
 
 echo " => Téléchargement des scripts"
-wget https://github.com/geekariom/recal-script/archive/master.zip -O ${tmpfile} --show-progress --quiet
+wget -O ${tmpfile} --show-progress --quiet https://github.com/geekariom/recal-script/archive/master.zip
 mkdir -p ${destdir}
 
 echo " => Décompression"
