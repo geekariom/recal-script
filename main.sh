@@ -3,8 +3,6 @@
 # Script général
 #
 
-source ./vars
-
 show_menu() {
     clear
     echo "##############################################"
@@ -21,12 +19,12 @@ show_menu() {
     case $choix in
         # USB Power
         1)
-            bash ${SCRIPTDIR}/usb-power.sh
+            bash ~/geekariom/usb-power.sh
             ;;
             
         # Noobs screen
         2)
-            bash ${SCRIPTDIR}/noobs.sh
+            bash ~/geekariom/noobs.sh
             ;;
             
         # Quitter
@@ -36,7 +34,7 @@ show_menu() {
             
         # Mauvais choix
         *)
-            echo "Choix incorrect !"
+            echo "Choix incorrect ($choix) !"
             exit 1
             ;;
     esac

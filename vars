@@ -3,5 +3,5 @@
 # Les variables globales
 #
 
-SCRIPTDIR=/recalbox/share/tools/geekariom
+SCRIPTDIR=~/geekariom
 source ${SCRIPTDIR}/functions

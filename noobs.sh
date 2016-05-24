@@ -3,7 +3,7 @@
 # Activer ou désactiver le menu noobs au démarrage
 #
 
-partition="/dev/mmcblk0p1"
+partition=/dev/mmcblk0p1
 
 echo " => Désactiver le menu NOOBS permet de gagner quelques secondes lors du démarrage de la Recalbox"
 

@@ -3,7 +3,7 @@
 # Optimiser la tension du Rpi
 #
 
-source ./vars
+source ~/geekariom/vars
 
 if [ ! -f /boot/config.txt ]; then
     echo " /!\ Fichier de configuration introuvable !"

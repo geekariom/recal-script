@@ -4,12 +4,11 @@
 # Run :  wget https://raw.githubusercontent.com/geekariom/recal-script/master/install.sh -O - | bash
 #
 
-destdir=/recalbox/share/tools/geekariom
+destdir=~/geekariom
 tmpfile=~/script.zip
-branch="master"
 
 echo " => Téléchargement des scripts"
-wget -O ${tmpfile} --show-progress --quiet https://github.com/geekariom/recal-script/archive/${branch}.zip
+wget -O ${tmpfile} --show-progress --quiet https://github.com/geekariom/recal-script/archive/master.zip
 
 echo " => Création des dossiers"
 if [ -e ${destdir} ]; then
