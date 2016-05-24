@@ -3,8 +3,8 @@
 # Script permettant l'installation de pack de scripts
 #
 
-destdir="~/tools"
-tmpfile="~/script.zip"
+destdir=/recalbox/share/tools/geekariom
+tmpfile=~/script.zip
 
 
 echo " => Téléchargement des scripts"
@@ -15,7 +15,7 @@ echo " => Décompression"
 unzip -o -d "${destdir}" -q ${tmpfile}
 
 echo " => Suppression des fichiers temporaires"
-rm ${tmpfile}
+#rm ${tmpfile}
 
 echo " => Fin de l'installation"
 echo ""
