@@ -23,7 +23,7 @@ mv ${destdir}/recal-script-master/* ${destdir}
 
 echo " => Suppression des fichiers temporaires"
 rm ${tmpfile}
-rm -Rf ${destdir}/recal-script-${branch}
+rm -Rf ${destdir}/recal-script-master
 
 echo -e " => Fin de l'installation\n"
 read -p "Voulez-vous lancer le script maintenant ? (o/n) " start
