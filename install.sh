@@ -19,7 +19,7 @@ mkdir -p ${destdir}
 
 echo " => Décompression"
 unzip -o -d "${destdir}" -q ${tmpfile}
-mv ${destdir}/recal-script-${branch}/* ${destdir}
+mv ${destdir}/recal-script-master/* ${destdir}
 
 echo " => Suppression des fichiers temporaires"
 rm ${tmpfile}
