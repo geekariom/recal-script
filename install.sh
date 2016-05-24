@@ -5,11 +5,12 @@
 #
 
 destdir=/recalbox/share/tools/geekariom
-tmpfile=~/script.tar.gz
+tmpfile=~/script.zip
+branch="master"
 
 
 echo " => Téléchargement des scripts"
-wget -O ${tmpfile} --show-progress --quiet https://github.com/geekariom/recal-script/archive/master.tar.gz
+wget -O ${tmpfile} --show-progress --quiet https://github.com/geekariom/recal-script/archive/${branch}.zip
 
 echo " => Création des dossiers"
 if [ -e ${destdir} ]; then
@@ -18,10 +19,12 @@ fi
 mkdir -p ${destdir}
 
 echo " => Décompression"
-tar -xzf ${tmpfile} --strip=1 -C ${destdir}
+unzip -o -d "${destdir}" -q ${tmpfile}
+mv ${destdir}/recal-script-${branch}/* ${destdir}
 
 echo " => Suppression des fichiers temporaires"
 rm ${tmpfile}
+rmdir ${destdir}/recal-script-${branch}
 
 echo " => Fin de l'installation"
 echo ""
