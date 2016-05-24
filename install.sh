@@ -26,7 +26,8 @@ rm ${tmpfile}
 rm -Rf ${destdir}/recal-script-master
 
 echo -e " => Fin de l'installation\n"
-read -p "Voulez-vous lancer le script maintenant ? (o/n) " start
+echo "Voulez-vous lancer le script maintenant ? (o/n) " 
+read start
 if [ $start = 'o' ]; then
     bash ${destdir}/main.sh
 fi
