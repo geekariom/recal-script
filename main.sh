@@ -3,6 +3,8 @@
 # Script général
 #
 
+source ./vars
+
 show_menu() {
     clear
     echo "##############################################"
@@ -19,12 +21,12 @@ show_menu() {
     case $choix in
         # USB Power
         1)
-            bash ./usb-power.sh
+            bash ${SCRIPTDIR}/usb-power.sh
             ;;
             
         # Noobs screen
         2)
-            bash ./noobs.sh
+            bash ${SCRIPTDIR}/noobs.sh
             ;;
             
         # Quitter

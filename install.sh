@@ -13,6 +13,7 @@ wget -O ${tmpfile} --show-progress --quiet https://github.com/geekariom/recal-sc
 
 echo " => Création des dossiers"
 if [ -e ${destdir} ]; then
+    echo " => Suppression ancienne installation"
     rm -Rf ${destdir}
 fi
 mkdir -p ${destdir}
@@ -26,8 +27,8 @@ rm ${tmpfile}
 rm -Rf ${destdir}/recal-script-${branch}
 
 echo -e " => Fin de l'installation\n"
-read -p "Voulez-vous lancer le script maintenant ? (o/n) " ask
-if [ $ask = 'o' ]; then
+read -p "Voulez-vous lancer le script maintenant ? (o/n) " start
+if [ $start = 'o' ]; then
     bash ${destdir}/main.sh
 fi
 
