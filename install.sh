@@ -8,7 +8,6 @@ destdir=/recalbox/share/tools/geekariom
 tmpfile=~/script.zip
 branch="master"
 
-
 echo " => Téléchargement des scripts"
 wget -O ${tmpfile} --show-progress --quiet https://github.com/geekariom/recal-script/archive/${branch}.zip
 
@@ -24,10 +23,9 @@ mv ${destdir}/recal-script-${branch}/* ${destdir}
 
 echo " => Suppression des fichiers temporaires"
 rm ${tmpfile}
-rmdir ${destdir}/recal-script-${branch}
+rm -Rf ${destdir}/recal-script-${branch}
 
-echo " => Fin de l'installation"
-echo ""
+echo -e " => Fin de l'installation\n"
 read -p "Voulez-vous lancer le script maintenant ? (o/n) " ask
 if [ $ask = 'o' ]; then
     bash ${destdir}/main.sh
