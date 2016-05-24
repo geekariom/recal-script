@@ -12,10 +12,11 @@ show_menu() {
     echo "0) Quitter"
     echo "1) Augmenter/Réduire tension des ports USB"
     echo "2) Activer/Désactiver le menu NOOBS"
+    echo "3) Mise à jour du script"
     echo "8) Redémarrer la recalbox"
     echo "9) Éteindre la recalbox"
     echo ""
-    read -p "Choix [0-2] ?" choix
+    read -p "Choix [0-9] ?" choix
     
     case $choix in
         # USB Power
@@ -27,6 +28,12 @@ show_menu() {
         2)
             bash ~/geekariom/noobs.sh
             ;;
+        
+        # Update    
+        3)
+            bash ~/geekariom/install.sh
+            ;;
+        
             
         # Restart
         8)
