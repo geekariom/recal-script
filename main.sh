@@ -12,6 +12,8 @@ show_menu() {
     echo "0) Quitter"
     echo "1) Augmenter/Réduire tension des ports USB"
     echo "2) Activer/Désactiver le menu NOOBS"
+    echo "8) Redémarrer la recalbox"
+    echo "9) Éteindre la recalbox"
     echo ""
     read -p "Choix [0-2] ?" choix
     
@@ -24,6 +26,16 @@ show_menu() {
         # Noobs screen
         2)
             bash ~/geekariom/noobs.sh
+            ;;
+            
+        # Restart
+        8)
+            shutdown -r now
+            ;;
+            
+        # Halt
+        9)
+            shutdown -h now
             ;;
             
         # Quitter
