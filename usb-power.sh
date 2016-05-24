@@ -23,15 +23,17 @@ if [ $ask = "o" ]; then
     mount_boot
     
     if [ $enabled = "1" ]; then
+        echo " => Remise par défaut de la tension"
         sed -i '/max_usb_current/d' /boot/config.txt
     else
+        echo " => Augmentation de la tension"
         echo "max_usb_current=1" >> /boot/config.txt
     fi
     
     umount_boot
     ask_reboot
 else
-    echo " => Aucune modification\n"
+    echo -e " => Aucune modification\n"
 fi
 
 exit 0
