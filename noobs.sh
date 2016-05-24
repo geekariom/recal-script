@@ -4,6 +4,8 @@
 #
 
 partition=/dev/mmcblk0p1
+source ~/geekariom/vars
+
 
 echo " => Désactiver le menu NOOBS permet de gagner quelques secondes lors du démarrage de la Recalbox"
 

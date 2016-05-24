@@ -4,6 +4,7 @@
 #
 
 show_menu() {
+    clear
     echo "##############################################"
     echo "#################### MENU ####################"
     echo "##############################################"
@@ -13,6 +14,7 @@ show_menu() {
     echo "2) Activer/Désactiver le menu NOOBS"
     echo ""
     read -p "Choix [0-2] ?" choix
+    
     case $choix in
         # USB Power
         1)

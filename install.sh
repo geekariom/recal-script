@@ -29,7 +29,7 @@ echo -e " => Fin de l'installation\n"
 echo "Voulez-vous lancer le script maintenant ? (o/n) " 
 read start
 if [ $start = 'o' ]; then
-    bash ${destdir}/main.sh
+    /bin/bash ${destdir}/main.sh;
 fi
 
 exit 0
