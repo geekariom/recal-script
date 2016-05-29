@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Scrapper les images des jeux
+# Scraper les images des jeux
 
 source ~/geekariom/vars
 
@@ -19,16 +19,16 @@ if [ "$proc" = "" ]; then
     exit 2
 elif [[ $rpi3list =~ $proc ]]; then
     echo "Raspberry PI 3 ($proc)"
-    scrapper="~/geekariom/tools/scrapper/scrapper-rpi2"
+    scraper="~/geekariom/tools/scrapper/scraper-rpi2"
 elif [[ $rpi2list =~ $proc ]]; then
     echo "Raspberry PI 2 ($proc)"
-    scrapper="~/geekariom/tools/scrapper/scrapper-rpi2"
+    scraper="~/geekariom/tools/scrapper/scraper-rpi2"
 elif [[ $rpi1list =~ $proc ]]; then
     echo "Raspberry PI 1 ($proc)"
-    scrapper="~/geekariom/tools/scrapper/scrapper-rpi"
+    scraper="~/geekariom/tools/scrapper/scraper-rpi"
 elif [[ $rpi0list =~ $proc ]]; then
     echo "Raspberry PI Zero ($proc)"
-    scrapper="~/geekariom/tools/scrapper/scrapper-rpi2"
+    scraper="~/geekariom/tools/scrapper/scraper-rpi2"
 else
     echo "Introubable ($proc)"
     exit 2
@@ -37,7 +37,7 @@ fi
 # Vérification de la cnx
 echo -n "=> Vérification de la connexion Internet : "
 if [ $(check_online) = "0" ]; then
-    echo -e "Aucune\nUne connexion est requise pour scrapper les jeux !"
+    echo -e "Aucune\nUne connexion est requise pour scraper les jeux !"
     exit 3
 else
     echo "OK"
@@ -45,10 +45,10 @@ fi
 
 # Scrapper
 cat <<EOF
-##########################################################
-######################## SCRAPPER ########################
-##########################################################
- Voici la liste des consoles supportées par le scrapper :
+#########################################################
+######################## SCRAPER ########################
+#########################################################
+ Voici la liste des consoles supportées par le scraper :
 
 * ATARI :
     1) Atari 2600       2) Atari 7800       3) Lynx
@@ -74,15 +74,15 @@ EOF
 
 declare -a systemlist=('' 'atari2600' 'atari7800' 'lynx' 'neogeo' 'ngp' 'ngpc' 'nes' 'snes' 'n64' 'virtualboy' 'gb' 'gba' 'gbc' 'sg1000' 'mastersystem' 'segacd' 'sega32x' 'gamegear' 'megadrive' 'fba' 'fba_libretro' 'mame' 'pcengine' 'supergrafx' 'psx' 'vectrex')
 list_mame="mame fba neogeo"
-read -p "Taper le numéro (ou les numéros séparé par des espaces) des consoles à scrapper :" consoles
+read -p "Taper le numéro (ou les numéros séparé par des espaces) des consoles à scraper :" consoles
 
-echo -e "Pendant le scrap, l'écran de la recalbox va s'éteindre !\Il se rallumera à la fin de l'opération"
-read -p "Appuyer sur une touche pour lancer le scrapper"
+echo -e "Pendant le scrap, l'écran de la recalbox va s'éteindre !\nIl se rallumera à la fin de l'opération"
+read -p "Appuyer sur une touche pour lancer le scraper"
 /etc/init.d/S31emulationstation stop
 
 for console in $consoles; do
     rom_name=${systemlist[$console]}
-    echo "############## LANCEMENT DU SCRAPPER POUR $rom_name ##############"
+    echo "############## LANCEMENT DU SCRAPER POUR $rom_name ##############"
     opts=""
     if [[ $list_mame =~ $rom_name ]]; then
         opts='-mame -mame_img "m,t,s"'
@@ -90,7 +90,7 @@ for console in $consoles; do
     
     rm -r ~/.emulationstation/downloaded_images/$rom_name
     
-    ${scrapper} \
+    ${scraper} \
             ${opts} \
             -no_thumb=true \
             -max_width=375 \
@@ -101,7 +101,7 @@ for console in $consoles; do
             -image_path="~/.emulationstation/downloaded_images/$rom_name"
             
     nb=$(ls ~/.emulationstation/downloaded_images/$rom_name | wc -l)
-    echo "Fin du scrapping de $rom_name : $nb image(s)"
+    echo "Fin du scraping de $rom_name : $nb image(s)"
 done
 
 /etc/init.d/S31emulationstation start

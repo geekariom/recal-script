@@ -14,7 +14,7 @@ show_menu() {
     echo "2) Activer/Désactiver le menu NOOBS"
     echo "3) Mise à jour du script"
     echo "4) Installer button reset"
-    echo "5) Scrapper"
+    echo "5) Scraper"
     echo "8) Redémarrer la recalbox"
     echo "9) Éteindre la recalbox"
     echo ""
@@ -50,10 +50,10 @@ show_menu() {
             mount -o ro,remount /
             ;;
             
-        # Scrapper
+        # Scraper
         5)
             clear
-            bash ~/geekariom/scrapper.sh
+            bash ~/geekariom/scraper.sh
             ;;
             
         # Restart
