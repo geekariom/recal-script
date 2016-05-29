@@ -75,6 +75,11 @@ EOF
 declare -a systemlist=('' 'atari2600' 'atari7800' 'lynx' 'neogeo' 'ngp' 'ngpc' 'nes' 'snes' 'n64' 'virtualboy' 'gb' 'gba' 'gbc' 'sg1000' 'mastersystem' 'segacd' 'sega32x' 'gamegear' 'megadrive' 'fba' 'fba_libretro' 'mame' 'pcengine' 'supergrafx' 'psx' 'vectrex')
 list_mame="mame fba neogeo"
 read -p "Taper le numéro (ou les numéros séparé par des espaces) des consoles à scrapper :" consoles
+
+echo -e "Pendant le scrap, l'écran de la recalbox va s'éteindre !\Il se rallumera à la fin de l'opération"
+read -p "Appuyer sur une touche pour lancer le scrapper"
+/etc/init.d/S31emulationstation stop
+
 for console in $consoles; do
     rom_name=${systemlist[$console]}
     echo "############## LANCEMENT DU SCRAPPER POUR $rom_name ##############"
@@ -93,3 +98,5 @@ for console in $consoles; do
             -image_dir="../../system/emulationstation/downloaded_images/$rom_name" \
             -image_path="~/.emulationstation/downloaded_images/$rom_name"
 done
+
+/etc/init.d/S31emulationstation start
