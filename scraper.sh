@@ -92,7 +92,10 @@ for console in $consoles; do
         opts='-mame -mame_img "m,t,s"'
     fi
     
-    rm -r ~/.emulationstation/downloaded_images/$rom_name
+    dir_rom=~/.emulationstation/downloaded_images/$rom_name
+    if [ -e $dir_rom ]; then
+        rm -r $dir_rom
+    fi
     
     ${scraper} \
             ${opts} \
@@ -104,10 +107,14 @@ for console in $consoles; do
             -rom_dir="/recalbox/share/roms/$rom_name" \
             -output_file="/recalbox/share/roms/$rom_name/gamelist.xml" \
             -image_dir="/recalbox/share/system/.emulationstation/downloaded_images/$rom_name" \
-            -image_path="~/.emulationstation/downloaded_images/$rom_name"
+            -image_path="$dir_rom"
             
-    nb=$(ls ~/.emulationstation/downloaded_images/$rom_name | wc -l)
-    echo "Fin du scraping de $rom_name : $nb image(s)"
+    if [ -e $dir_rom ]; then
+        nb=$(ls ~/.emulationstation/downloaded_images/$rom_name | wc -l)
+        echo "Fin du scraping de $rom_name : $nb image(s)"
+    else
+        echo "Fin du scraping de $rom_name : aucune image"
+    fi
 done
 
 /etc/init.d/S31emulationstation start
