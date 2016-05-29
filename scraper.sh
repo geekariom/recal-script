@@ -20,15 +20,19 @@ if [ "$proc" = "" ]; then
 elif [[ $rpi3list =~ $proc ]]; then
     echo "Raspberry PI 3 ($proc)"
     scraper=~/geekariom/tools/scrapper/scraper-rpi2
+    nbworkers=4
 elif [[ $rpi2list =~ $proc ]]; then
     echo "Raspberry PI 2 ($proc)"
     scraper=~/geekariom/tools/scrapper/scraper-rpi2
+    nbworkers=2
 elif [[ $rpi1list =~ $proc ]]; then
     echo "Raspberry PI 1 ($proc)"
     scraper=~/geekariom/tools/scrapper/scraper-rpi
+    nbworkers=1
 elif [[ $rpi0list =~ $proc ]]; then
     echo "Raspberry PI Zero ($proc)"
     scraper=~/geekariom/tools/scrapper/scraper-rpi2
+    nbworkers=1
 else
     echo "Introubable ($proc)"
     exit 2
@@ -95,6 +99,8 @@ for console in $consoles; do
             -no_thumb=true \
             -max_width=375 \
             -gdb_img="b,s,f" \
+            -workers=$nbworkers \
+            -img_workers=1 \
             -rom_dir="/recalbox/share/roms/$rom_name" \
             -output_file="/recalbox/share/roms/$rom_name/gamelist.xml" \
             -image_dir="/recalbox/share/system/.emulationstation/downloaded_images/$rom_name" \
