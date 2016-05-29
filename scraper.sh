@@ -83,6 +83,8 @@ read -p "Taper le numéro (ou les numéros séparé par des espaces) des console
 echo -e "Pendant le scrap, l'écran de la recalbox va s'éteindre !\nIl se rallumera à la fin de l'opération"
 read -p "Appuyer sur une touche pour lancer le scraper"
 /etc/init.d/S31emulationstation stop
+sleep 3
+kill -9 $(ps aux|grep emulation | grep -v grep | awk '{ print $1 }')
 
 for console in $consoles; do
     rom_name=${systemlist[$console]}
@@ -92,9 +94,9 @@ for console in $consoles; do
         opts='-mame -mame_img "m,t,s"'
     fi
     
-    dir_rom=~/.emulationstation/downloaded_images/$rom_name
-    if [ -e $dir_rom ]; then
-        rm -r $dir_rom
+    dir_rom=/recalbox/share/roms/$rom_name
+    if [ -e $dir_rom/downloaded_images ]; then
+        rm -r $dir_rom/downloaded_images
     fi
     
     ${scraper} \
@@ -104,9 +106,9 @@ for console in $consoles; do
             -gdb_img="b,s,f" \
             -workers=$nbworkers \
             -img_workers=1 \
-            -rom_dir="/recalbox/share/roms/$rom_name" \
-            -output_file="/recalbox/share/roms/$rom_name/gamelist.xml" \
-            -image_dir="/recalbox/share/system/.emulationstation/downloaded_images/$rom_name" \
+            -rom_dir="$dir_rom" \
+            -output_file="$dir_rom/gamelist.xml" \
+            -image_dir="$dir_rom/downloaded_images" \
             -image_path="$dir_rom"
             
     if [ -e $dir_rom ]; then
