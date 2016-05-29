@@ -109,10 +109,10 @@ for console in $consoles; do
             -rom_dir="$dir_rom" \
             -output_file="$dir_rom/gamelist.xml" \
             -image_dir="$dir_rom/downloaded_images" \
-            -image_path="$dir_rom"
+            -image_path="./downloaded_images"
             
-    if [ -e $dir_rom ]; then
-        nb=$(ls ~/.emulationstation/downloaded_images/$rom_name | wc -l)
+    if [ -e $dir_rom/downloaded_images ]; then
+        nb=$(ls $dir_rom/downloaded_images | wc -l)
         echo "Fin du scraping de $rom_name : $nb image(s)"
     else
         echo "Fin du scraping de $rom_name : aucune image"
