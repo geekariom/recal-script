@@ -88,6 +88,8 @@ for console in $consoles; do
         opts='-mame -mame_img "m,t,s"'
     fi
     
+    rm -r ~/.emulationstation/downloaded_images/$rom_name
+    
     ${scrapper} \
             ${opts} \
             -no_thumb=true \
@@ -97,6 +99,9 @@ for console in $consoles; do
             -output_file="/recalbox/share/roms/$rom_name/gamelist.xml" \
             -image_dir="../../system/emulationstation/downloaded_images/$rom_name" \
             -image_path="~/.emulationstation/downloaded_images/$rom_name"
+            
+    nb=$(ls ~/.emulationstation/downloaded_images/$rom_name | wc -l)
+    echo "Fin du scrapping de $rom_name : $nb image(s)"
 done
 
 /etc/init.d/S31emulationstation start

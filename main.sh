@@ -52,6 +52,7 @@ show_menu() {
             
         # Scrapper
         5)
+            clear
             bash ~/geekariom/scrapper.sh
             ;;
             
