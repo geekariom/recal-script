@@ -33,7 +33,7 @@ ask_reboot() {
 
 # Vérifier la connexion
 check_online() {
-    wget -q --tries=10 --timeout=20 --spider http://www.recalbox.com/
+    wget -q --tries=1 --timeout=5 --spider http://www.recalbox.com/
     if [[ $? -eq 0 ]]; then
         echo 1
     else
