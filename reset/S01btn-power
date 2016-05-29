@@ -1,0 +1,14 @@
+#!/bin/bash
+
+case "$1" in
+  start)
+      python /recalbox/scripts/btn-reboot.py &
+      ;;
+  stop)
+        ;;
+  restart|reload)
+        ;;
+  *)
+esac
+
+exit $?
