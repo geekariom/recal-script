@@ -19,16 +19,16 @@ if [ "$proc" = "" ]; then
     exit 2
 elif [[ $rpi3list =~ $proc ]]; then
     echo "Raspberry PI 3 ($proc)"
-    scraper="~/geekariom/tools/scrapper/scraper-rpi2"
+    scraper=~/geekariom/tools/scrapper/scraper-rpi2
 elif [[ $rpi2list =~ $proc ]]; then
     echo "Raspberry PI 2 ($proc)"
-    scraper="~/geekariom/tools/scrapper/scraper-rpi2"
+    scraper=~/geekariom/tools/scrapper/scraper-rpi2
 elif [[ $rpi1list =~ $proc ]]; then
     echo "Raspberry PI 1 ($proc)"
-    scraper="~/geekariom/tools/scrapper/scraper-rpi"
+    scraper=~/geekariom/tools/scrapper/scraper-rpi
 elif [[ $rpi0list =~ $proc ]]; then
     echo "Raspberry PI Zero ($proc)"
-    scraper="~/geekariom/tools/scrapper/scraper-rpi2"
+    scraper=~/geekariom/tools/scrapper/scraper-rpi2
 else
     echo "Introubable ($proc)"
     exit 2
@@ -97,7 +97,7 @@ for console in $consoles; do
             -gdb_img="b,s,f" \
             -rom_dir="/recalbox/share/roms/$rom_name" \
             -output_file="/recalbox/share/roms/$rom_name/gamelist.xml" \
-            -image_dir="../../system/emulationstation/downloaded_images/$rom_name" \
+            -image_dir="/recalbox/share/system/.emulationstation/downloaded_images/$rom_name" \
             -image_path="~/.emulationstation/downloaded_images/$rom_name"
             
     nb=$(ls ~/.emulationstation/downloaded_images/$rom_name | wc -l)
